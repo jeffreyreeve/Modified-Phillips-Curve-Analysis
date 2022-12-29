@@ -1,0 +1,44 @@
+---
+title: "R Notebook"
+output: html_notebook
+---
+```{r}
+library(dplyr)
+library(tidyverse)
+```
+# read in the 2 files
+```{r}
+unemployment = read.csv('../data/UNRATE.csv')
+```
+```{r}
+inflation = read.csv('../data/PCEPILFE.csv')
+```
+
+# join the 2 files on the "DATE" column
+```{r}
+unemploymentInflation = left_join(unemployment, inflation, by = "DATE") 
+```
+
+#drop the rows where there is no inflation data
+```{r}
+unemploymentInflation <- unemploymentInflation[-(1:132),]
+```
+
+# rename the UNRATE and PCEPILFE columns; match syntax in DATE column
+```{r}
+unenmploymentInflation = unemploymentInflation %>% 
+              transmute(
+              date = DATE,
+              unemployment_rate = UNRATE,
+              core_PCE_index = PCEPILFE)
+```
+
+# create a line chart graphing unemployment vs inflation over time
+```{r}
+ggplot(unemploymentInflation1, aes(x=unemployment_rate, y=core_PCE_index)) + geom_line()
+```
+```{r}
+typeof(unemployment_rate)
+typeof(core_PCE_index)
+```
+
