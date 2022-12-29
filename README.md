@@ -1,2 +1,2 @@
 # Modified-Phillips-Curve-Analysis
-An analysis of Unemployment and Inflation over 74 years
+An analysis of Unemployment and Inflation over 64 years
