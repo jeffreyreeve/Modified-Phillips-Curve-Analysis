@@ -33,9 +33,9 @@ unenmploymentInflation = unemploymentInflation %>%
               core_PCE_index = PCEPILFE)
 ```
 
-# create a line chart graphing unemployment vs inflation over time
+# create a chart graphing unemployment vs inflation over time
 ```{r}
-ggplot(unemploymentInflation1, aes(x=unemployment_rate, y=core_PCE_index)) + geom_line()
+ggplot(unemploymentInflation, aes(x=unemployment_rate, y=core_PCE_index)) + geom_point()
 ```
 ```{r}
 typeof(unemployment_rate)
