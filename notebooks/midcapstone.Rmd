@@ -26,7 +26,7 @@ unemploymentInflation <- unemploymentInflation[-(1:132),]
 
 # rename the UNRATE and PCEPILFE columns; match syntax in DATE column
 ```{r}
-unenmploymentInflation = unemploymentInflation %>% 
+unemploymentInflation = unemploymentInflation %>% 
               transmute(
               date = DATE,
               unemployment_rate = UNRATE,
@@ -38,7 +38,48 @@ unenmploymentInflation = unemploymentInflation %>%
 ggplot(unemploymentInflation, aes(x=unemployment_rate, y=core_PCE_index)) + geom_point()
 ```
 ```{r}
-typeof(unemployment_rate)
-typeof(core_PCE_index)
+library("readxl")
 ```
+# read in the excel files
+```{r}
+Pre_1970 = read_csv('../data/Pre_1970.csv')
+Post_1970 = read_csv('../data/Post_1970.csv')  
+```
+# concatenate the 2 tables
+```{r}
+combined <- rbind(Pre_1970, Post_1970)
+```
+# rename columns
+```{r}
+unempInfla = combined %>% 
+              transmute(
+              date = observation_date,
+              inflation_rate = PCECTPI_PC1,
+              unemployment_rate = UNRATE) 
+```
+# create a chart graphing unemployment vs inflation over time
+```{r}
+ggplot(unempInfla, aes(x=unemployment_rate, y=inflation_rate)) + geom_point() 
+```
+# redo initial code with more complete inflation data
+```{r}
+unemploymentNew = read.csv('../data/UNRATE.csv')
+inflationNew = read.csv('../data/pce_complete.csv') 
+```
+
+# rename column in inflationNew
+```{r}
+inflationNew = inflationNew %>% 
+              transmute(
+              date = DATE,
+              inflation_rate = DPCCRV1Q225SBEA)
+```
+
+#combine unemploymentInflation and inflationNew
+# graph with new data
+```{r}
+ggplot(unempInfla, aes(x=unemployment_rate, y=inflation_rate)) + geom_point() 
+```
+
+
 
