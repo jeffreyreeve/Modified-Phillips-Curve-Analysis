@@ -6,68 +6,20 @@ output: html_notebook
 library(dplyr)
 library(tidyverse)
 ```
-# read in the 2 files
+# read in files using more complete data
 ```{r}
-unemployment = read.csv('../data/UNRATE.csv')
-```
-```{r}
-inflation = read.csv('../data/PCEPILFE.csv')
-```
-
-# join the 2 files on the "DATE" column
-```{r}
-unemploymentInflation = left_join(unemployment, inflation, by = "DATE") 
-```
-
-#drop the rows where there is no inflation data
-```{r}
-unemploymentInflation <- unemploymentInflation[-(1:132),]
-```
-
-# rename the UNRATE and PCEPILFE columns; match syntax in DATE column
-```{r}
-unemploymentInflation = unemploymentInflation %>% 
-              transmute(
-              date = DATE,
-              unemployment_rate = UNRATE,
-              core_PCE_index = PCEPILFE)
-```
-
-# create a chart graphing unemployment vs inflation over time
-```{r}
-ggplot(unemploymentInflation, aes(x=unemployment_rate, y=core_PCE_index)) + geom_point()
-```
-```{r}
-library("readxl")
-```
-# read in the excel files
-```{r}
-Pre_1970 = read_csv('../data/Pre_1970.csv')
-Post_1970 = read_csv('../data/Post_1970.csv')  
-```
-# concatenate the 2 tables
-```{r}
-combined <- rbind(Pre_1970, Post_1970)
-```
-# rename columns
-```{r}
-unempInfla = combined %>% 
-              transmute(
-              date = observation_date,
-              inflation_rate = PCECTPI_PC1,
-              unemployment_rate = UNRATE) 
-```
-# create a chart graphing unemployment vs inflation over time
-```{r}
-ggplot(unempInfla, aes(x=unemployment_rate, y=inflation_rate)) + geom_point() 
-```
-# redo initial code with more complete inflation data
-```{r}
-unemploymentNew = read.csv('../data/UNRATE.csv')
+unemploymentNew = read.csv('../data/unrate_quarterly.csv')
 inflationNew = read.csv('../data/pce_complete.csv') 
 ```
 
-# rename column in inflationNew
+# rename columns in unemploymentNew
+```{r}
+unemploymentNew = unemploymentNew %>% 
+              transmute(
+              date = DATE,
+              unemployment_rate = LRUNTTTTUSQ156S)
+```
+# rename columns in inflationNew
 ```{r}
 inflationNew = inflationNew %>% 
               transmute(
@@ -76,9 +28,13 @@ inflationNew = inflationNew %>%
 ```
 
 #combine unemploymentInflation and inflationNew
-# graph with new data
 ```{r}
-ggplot(unempInfla, aes(x=unemployment_rate, y=inflation_rate)) + geom_point() 
+unemploymentandinflation <- merge(unemploymentNew, inflationNew) 
+```
+
+# graph unemployment and inflation using all available data
+```{r}
+ggplot(unemploymentandinflation, aes(x=unemployment_rate, y=inflation_rate)) + geom_point() 
 ```
 
 
