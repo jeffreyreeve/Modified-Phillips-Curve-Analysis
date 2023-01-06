@@ -112,5 +112,22 @@ ggplot(unemploymentandinflation[which(unemploymentandinflation$date>="2015-01-01
   theme(plot.title = element_text(hjust = 0.5)) + xlab("Unemployment Rate") + ylab("Inflation Rate") 
 ```
 
+# plot by 3-year periods
+```{r}
+ggplot(unemploymentandinflation[which(unemploymentandinflation$date>="1960-01-01" & unemploymentandinflation$date<="1962-10-01"),], aes(x=unemployment_rate, y=inflation_rate)) + geom_point() + geom_smooth(method=lm) + geom_point(color = "orange") + theme_bw() + ggtitle("Unemployment vs. Inflation 1960-1962") +
+  theme(plot.title = element_text(hjust = 0.5)) + xlab("Unemployment Rate") + ylab("Inflation Rate") 
+```
+```{r}
+ggplot(unemploymentandinflation[which(unemploymentandinflation$date>="1963-01-01" & unemploymentandinflation$date<="1965-10-01"),], aes(x=unemployment_rate, y=inflation_rate)) + geom_point() + geom_smooth(method=lm) + geom_point(color = "orange") + theme_bw() + ggtitle("Unemployment vs. Inflation 1963-1965") +
+  theme(plot.title = element_text(hjust = 0.5)) + xlab("Unemployment Rate") + ylab("Inflation Rate") 
+```
+```{r}
+ggplot(unemploymentandinflation[which(unemploymentandinflation$date>="1966-01-01" & unemploymentandinflation$date<="1968-10-01"),], aes(x=unemployment_rate, y=inflation_rate)) + geom_point() + geom_smooth(method=lm) + geom_point(color = "orange") + theme_bw() + ggtitle("Unemployment vs. Inflation 1966-1968") +
+  theme(plot.title = element_text(hjust = 0.5)) + xlab("Unemployment Rate") + ylab("Inflation Rate") 
+```
+```{r}
+ggplot(unemploymentandinflation[which(unemploymentandinflation$date>="1969-01-01" & unemploymentandinflation$date<="1971-10-01"),], aes(x=unemployment_rate, y=inflation_rate)) + geom_point() + geom_smooth(method=lm) + geom_point(color = "orange") + theme_bw() + ggtitle("Unemployment vs. Inflation 1969-1971") +
+  theme(plot.title = element_text(hjust = 0.5)) + xlab("Unemployment Rate") + ylab("Inflation Rate") 
+```
 
 
