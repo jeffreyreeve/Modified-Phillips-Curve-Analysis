@@ -6,7 +6,7 @@ output: html_notebook
 library(dplyr)
 library(tidyverse)
 ```
-# read in files using more complete data
+# read in files using more complete quarterly data
 ```{r}
 unemploymentNew = read.csv('../data/unrate_quarterly.csv')
 inflationNew = read.csv('../data/pce_complete.csv') 
@@ -35,6 +35,62 @@ unemploymentandinflation <- merge(unemploymentNew, inflationNew)
 # graph unemployment and inflation using all available data
 ```{r}
 ggplot(unemploymentandinflation, aes(x=unemployment_rate, y=inflation_rate)) + geom_point() 
+```
+# plot by 10-year periods
+```{r}
+ggplot(unemploymentandinflation[which(unemploymentandinflation$date>="1960-01-01" & unemploymentandinflation$date<="1969-10-01"),], aes(x=unemployment_rate, y=inflation_rate)) + geom_point() 
+```
+```{r}
+ggplot(unemploymentandinflation[which(unemploymentandinflation$date>="1970-01-01" & unemploymentandinflation$date<="1979-10-01"),], aes(x=unemployment_rate, y=inflation_rate)) + geom_point() 
+```
+```{r}
+ggplot(unemploymentandinflation[which(unemploymentandinflation$date>="1980-01-01" & unemploymentandinflation$date<="1989-10-01"),], aes(x=unemployment_rate, y=inflation_rate)) + geom_point() 
+```
+```{r}
+ggplot(unemploymentandinflation[which(unemploymentandinflation$date>="1990-01-01" & unemploymentandinflation$date<="1999-10-01"),], aes(x=unemployment_rate, y=inflation_rate)) + geom_point() 
+```
+```{r}
+ggplot(unemploymentandinflation[which(unemploymentandinflation$date>="2000-01-01" & unemploymentandinflation$date<="2009-10-01"),], aes(x=unemployment_rate, y=inflation_rate)) + geom_point() 
+```
+```{r}
+ggplot(unemploymentandinflation[which(unemploymentandinflation$date>="2010-01-01" & unemploymentandinflation$date<="2022-07-01"),], aes(x=unemployment_rate, y=inflation_rate)) + geom_point() 
+```
+# plot by 5-year periods
+```{r}
+ggplot(unemploymentandinflation[which(unemploymentandinflation$date>="1960-01-01" & unemploymentandinflation$date<="1964-10-01"),], aes(x=unemployment_rate, y=inflation_rate)) + geom_point() 
+```
+```{r}
+ggplot(unemploymentandinflation[which(unemploymentandinflation$date>="1965-01-01" & unemploymentandinflation$date<="1969-10-01"),], aes(x=unemployment_rate, y=inflation_rate)) + geom_point() 
+```
+```{r}
+ggplot(unemploymentandinflation[which(unemploymentandinflation$date>="1970-01-01" & unemploymentandinflation$date<="1974-10-01"),], aes(x=unemployment_rate, y=inflation_rate)) + geom_point()
+```
+```{r}
+ggplot(unemploymentandinflation[which(unemploymentandinflation$date>="1975-01-01" & unemploymentandinflation$date<="1979-10-01"),], aes(x=unemployment_rate, y=inflation_rate)) + geom_point()
+```
+```{r}
+ggplot(unemploymentandinflation[which(unemploymentandinflation$date>="1980-01-01" & unemploymentandinflation$date<="1984-10-01"),], aes(x=unemployment_rate, y=inflation_rate)) + geom_point()
+```
+```{r}
+ggplot(unemploymentandinflation[which(unemploymentandinflation$date>="1985-01-01" & unemploymentandinflation$date<="1989-10-01"),], aes(x=unemployment_rate, y=inflation_rate)) + geom_point()
+```
+```{r}
+ggplot(unemploymentandinflation[which(unemploymentandinflation$date>="1990-01-01" & unemploymentandinflation$date<="1994-10-01"),], aes(x=unemployment_rate, y=inflation_rate)) + geom_point()
+```
+```{r}
+ggplot(unemploymentandinflation[which(unemploymentandinflation$date>="1995-01-01" & unemploymentandinflation$date<="1999-10-01"),], aes(x=unemployment_rate, y=inflation_rate)) + geom_point()
+```
+```{r}
+ggplot(unemploymentandinflation[which(unemploymentandinflation$date>="2000-01-01" & unemploymentandinflation$date<="2004-10-01"),], aes(x=unemployment_rate, y=inflation_rate)) + geom_point() 
+```
+```{r}
+ggplot(unemploymentandinflation[which(unemploymentandinflation$date>="2005-01-01" & unemploymentandinflation$date<="2009-10-01"),], aes(x=unemployment_rate, y=inflation_rate)) + geom_point() 
+```
+```{r}
+ggplot(unemploymentandinflation[which(unemploymentandinflation$date>="2010-01-01" & unemploymentandinflation$date<="2014-10-01"),], aes(x=unemployment_rate, y=inflation_rate)) + geom_point()
+```
+```{r}
+ggplot(unemploymentandinflation[which(unemploymentandinflation$date>="2015-01-01" & unemploymentandinflation$date<="2022-07-01"),], aes(x=unemployment_rate, y=inflation_rate)) + geom_point() 
 ```
 
 
