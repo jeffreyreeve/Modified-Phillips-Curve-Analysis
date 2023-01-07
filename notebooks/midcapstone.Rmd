@@ -197,5 +197,18 @@ ggplot(unemploymentandinflation[which(unemploymentandinflation$date>="2017-01-01
 ggplot(unemploymentandinflation[which(unemploymentandinflation$date>="2020-01-01" & unemploymentandinflation$date<="2022-10-01"),], aes(x=unemployment_rate, y=inflation_rate)) + geom_point() + geom_smooth(method=lm) + geom_point(color = "orange") + theme_bw() + ggtitle("Unemployment vs. Inflation 2020-2022") +
   theme(plot.title = element_text(hjust = 0.5)) + xlab("Unemployment Rate") + ylab("Inflation Rate") 
 ```
+```{r}
+ggplot(unemploymentandinflation, aes(x = lubridate::as_date(date))) + 
+  geom_line(aes(y = unemployment_rate), color = "orange" ) + 
+  geom_line(aes(y = inflation_rate), color = "blue") + theme_bw() + ggtitle("Unemployment vs. Inflation 1960 - Present") +
+  theme(plot.title = element_text(hjust = 0.5)) + xlab("Date") + ylab("Unemployment Rate, Inflation Rate") 
+```
+```{r}
+remove.packages("reshape") 
+```
+
+
+
+
 
 
