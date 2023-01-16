@@ -2,7 +2,8 @@ library(shiny)
 library(tidyverse)
 
 #UnemploymentInflationCSV <- read_csv('data/unemploymentInflation.csv')  
-UnemploymentInflationRDS <- readRDS('data/unemploymentInflation.rds')  
+UnemploymentInflationRDS <- readRDS('data/unemploymentInflation.rds')
+recessionRDS <- readRDS('data/recessiondates.rds')
 datelist <- list('Since 1960' = c('1960-01-01', '2022-07-01'),
                  "1960's" = c('1960-01-01', '1969-12-31'),
                  "1970's" = c('1970-01-01', '1979-12-31'),
@@ -45,4 +46,4 @@ datelist <- list('Since 1960' = c('1960-01-01', '2022-07-01'),
                  "2020 - 2022" = c('2020-01-01', '2022-12-31'))
 
 
-recessionRDS <- readRDS('data/recessiondates.rds') 
+ 
