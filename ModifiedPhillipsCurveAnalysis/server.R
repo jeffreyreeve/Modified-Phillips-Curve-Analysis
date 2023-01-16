@@ -7,7 +7,7 @@ shinyServer(function(input, output) {
     output$UIScatterPlot <- renderPlot({
 
       datecutoff <- datelist[[input$select]]
-      ggplot(UnemploymentInflationRDS[which(UnemploymentInflationRDS$date>= datecutoff[1] & UnemploymentInflationRDS$date<=datecutoff[2]),], aes(x=unemployment_rate, y=inflation_rate)) + geom_point(pch=16, cex=2) + geom_smooth(method=lm, se=FALSE) + geom_point(color = "orange") + theme_bw() + ggtitle("Unemployment vs. Inflation") + theme(plot.title = element_text(hjust = 0.5)) + xlab("Unemployment Rate (%)") + ylab("Inflation Rate (PCEPI, %)")
+      ggplot(UnemploymentInflationRDS[which(UnemploymentInflationRDS$date>= datecutoff[1] & UnemploymentInflationRDS$date<=datecutoff[2]),], aes(x=unemployment_rate, y=inflation_rate)) + geom_point(pch=16, cex=2) + geom_smooth(method=lm, se=FALSE) + geom_point(color = "orange") + theme_bw() + ggtitle("Unemployment vs. Inflation") + theme(plot.title = element_text(hjust = 0.5)) + xlab("Unemployment Rate (%)") + ylab("Inflation Rate (PCEPI) %")
       
     })
     output$UIoverTimePlot <- renderPlot({

@@ -5,7 +5,7 @@ library(shiny)
 shinyUI(fluidPage(
 
     # Application title
-    titlePanel("Unemployment vs Inflation - Modified Phillips Curve Analysis"),
+    titlePanel("Modified Phillips Curve Analysis - Unemployment vs Inflation"),
 
     # Sidebar with a selection box for timeframe desired
     sidebarLayout(
