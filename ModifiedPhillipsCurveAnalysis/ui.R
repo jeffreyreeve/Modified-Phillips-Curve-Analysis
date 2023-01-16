@@ -5,7 +5,7 @@ library(shiny)
 shinyUI(fluidPage(
   
   # Application title
-  titlePanel("Modified Phillips Curve Analysis - Unemployment vs Inflation"),
+  titlePanel("Modified Phillips Curve Analysis - Unemployment vs. Inflation"),
   
   # Sidebar with a selection box for timeframe desired
   sidebarLayout(
@@ -41,7 +41,7 @@ shinyUI(fluidPage(
     # Show a scatter plot and a line graph of unemployment and inflation based on selected timeframe
     mainPanel(
       tabsetPanel(type = "tabs",
-                  tabPanel("Timeframes", plotOutput("UIScatterPlot"), plotOutput("UIoverTimePlot")),
+                  tabPanel("Analysis", plotOutput("UIScatterPlot"), plotOutput("UIoverTimePlot")),
                   tabPanel("Insights", plotOutput("UIfedfundsPlot"), plotOutput("UIrecessionsPlot")) 
       )
     )

@@ -1,7 +1,7 @@
 
 library(shiny)
 
-# Define server logic required to plot line graph and scatter plot
+# Define server logic required to produce scatter plots and line graphs for comparison and analysis
 shinyServer(function(input, output) {
   
   output$UIScatterPlot <- renderPlot({
@@ -18,7 +18,7 @@ shinyServer(function(input, output) {
     
   })
   output$UIfedfundsPlot <- renderPlot({
-    ggplot(UnemploymentInflationRDS, aes(x=fed_funds_rate)) + geom_point(aes(y=unemployment_rate), color = "blue", pch=16, cex=2) +  geom_point(aes(y=inflation_rate), color = "orange", pch=16, cex=2) + theme_bw() + ggtitle("Fed Funds vs. Unemployment (blue) & Inflation (orange), 1960 - Present") + theme(plot.title = element_text(hjust = 0.5)) + xlab("Fed Funds Rate (%)") + ylab("Unemloyment (%),  Inflation (PCEPI), %")
+    ggplot(UnemploymentInflationRDS, aes(x=fed_funds_rate)) + geom_point(aes(y=unemployment_rate), color = "blue", pch=16, cex=2) +  geom_point(aes(y=inflation_rate), color = "orange", pch=16, cex=2) + theme_bw() + ggtitle("FOMC Targets Low Inflation: Fed Funds, Unemployment (blue), Inflation (orange) since 1960") + theme(plot.title = element_text(hjust = 0.5)) + xlab("Fed Funds Rate (%)") + ylab("Unemloyment (%),  Inflation (PCEPI), %")
     
   }) 
   output$UIrecessionsPlot <- renderPlot({
