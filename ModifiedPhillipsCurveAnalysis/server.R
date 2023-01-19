@@ -18,12 +18,12 @@ shinyServer(function(input, output) {
     
   })
   output$UIfedfundsPlot <- renderPlot({
-    ggplot(UnemploymentInflationRDS, aes(x=fed_funds_rate)) + geom_point(aes(y=unemployment_rate), color = "blue", pch=16, cex=2) +  geom_point(aes(y=inflation_rate), color = "orange", pch=16, cex=2) + theme_bw() + ggtitle("FOMC Targets Low Inflation: Fed Funds, Unemployment (blue), Inflation (orange) since 1960") + theme(plot.title = element_text(hjust = 0.5)) + xlab("Fed Funds Rate (%)") + ylab("Unemloyment (%),  Inflation (PCEPI), %")
+    ggplot(UnemploymentInflationRDS, aes(x=fed_funds_rate)) + geom_point(aes(y=unemployment_rate), color = "blue", pch=16, cex=2) +  geom_point(aes(y=inflation_rate), color = "orange", pch=16, cex=2) + theme_bw() + ggtitle("FOMC Targets Low Inflation & Unemployment: Unemployment (blue), Inflation (orange)") + theme(plot.title = element_text(hjust = 0.5)) + xlab("Fed Funds Rate (%)") + ylab("Unemloyment (%),  Inflation (PCEPI), %")
     
   }) 
   output$UIrecessionsPlot <- renderPlot({
     ggplot(UnemploymentInflationRDS, aes(x = lubridate::as_date(date)))+ 
-      geom_line(aes(y = unemployment_rate), color = "blue", linewidth=0.8) + geom_line(aes(y = inflation_rate), color = "orange", linewidth=0.8) + geom_rect(data=recessionRDS, aes(x=NULL, y=NULL, xmin=lubridate::as_date(Peak), xmax=lubridate::as_date(Trough), ymin=-Inf, ymax=+Inf), alpha=0.2) + theme_bw() + ggtitle("Unemployment (blue), Inflation (orange), Recessions (grey), 1960 -Present") + theme(plot.title = element_text(hjust = 0.5)) + xlab("Date") + ylab("Unemployment, Inflation (PCEPI), %")
+      geom_line(aes(y = unemployment_rate), color = "blue", linewidth=0.8) + geom_line(aes(y = inflation_rate), color = "orange", linewidth=0.8) + geom_rect(data=recessionRDS, aes(x=NULL, y=NULL, xmin=lubridate::as_date(Peak), xmax=lubridate::as_date(Trough), ymin=-Inf, ymax=+Inf), alpha=0.2) + theme_bw() + ggtitle("Phillips Theory True During Recessions: Unemployment (blue), Inflation (orange), Recessions (grey)") + theme(plot.title = element_text(hjust = 0.5)) + xlab("Date") + ylab("Unemployment, Inflation (PCEPI), %")
   })  
   
 })

@@ -4,6 +4,8 @@ library(shiny)
 # Define UI for application that draws a histogram
 shinyUI(fluidPage(
   
+  tags$style(type = "text/css", "h2 {text-align: center;}"),
+  
   # Application title
   titlePanel("Modified Phillips Curve Analysis - Unemployment vs. Inflation"),
   
