@@ -12,7 +12,7 @@ shinyUI(fluidPage(
   # Sidebar with a selection box for timeframe desired
   sidebarLayout(
     sidebarPanel(
-      selectInput("select", label = h3("Select Timeframe"), 
+      selectInput("select", label = h3("Select Timeframe - Analysis Tab Only"), 
                   choices = list("Since 1960" , "1960's", "1970's",
                                  "1980's", "1990's", "2000's",
                                  "2010 - Present","1960 - 1964", 
@@ -44,7 +44,7 @@ shinyUI(fluidPage(
     mainPanel(
       tabsetPanel(type = "tabs",
                   tabPanel("Analysis", plotOutput("UIScatterPlot"), plotOutput("UIoverTimePlot")),
-                  tabPanel("Insights", plotOutput("UIfedfundsPlot"), plotOutput("UIrecessionsPlot")) 
+                  tabPanel("Insights", plotOutput("UIsince83Plot"), plotOutput("UIrecessionsPlot")) 
       )
     )
   ) 
