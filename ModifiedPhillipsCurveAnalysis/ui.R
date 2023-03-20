@@ -1,17 +1,17 @@
 
 library(shiny)
 
-# Define UI for application that draws a histogram
-shinyUI(fluidPage(
-  
-  tags$style(type = "text/css", "h2 {text-align: center;}"),
-  
-  # Application title
-  titlePanel("Modified Phillips Curve Analysis - Unemployment vs. Inflation"),
-  
-  # Sidebar with a selection box for timeframe desired
-  sidebarLayout(
-    sidebarPanel(
+# Define UI for application that analyzes unemployment & inflation
+shinyUI(
+  dashboardPage(
+    
+    tags$style(type = "text/css", "h2 {text-align: center;}"),
+    
+    # Application title
+    dashboardHeader(title = "Modified Phillips Curve Analysis - Unemployment vs. Inflation"),
+    
+    # Sidebar with a selection box for timeframe desired
+    dashboardSidebar(
       selectInput("select", label = h3("Select Timeframe - Analysis Tab Only"), 
                   choices = list("Since 1960" , "1960's", "1970's",
                                  "1980's", "1990's", "2000's",
@@ -41,11 +41,11 @@ shinyUI(fluidPage(
     ),
     
     # Show a scatter plot and a line graph of unemployment and inflation based on selected timeframe
-    mainPanel(
+    dashboardBody(
       tabsetPanel(type = "tabs",
                   tabPanel("Analysis", plotOutput("UIScatterPlot"), plotOutput("UIoverTimePlot")),
                   tabPanel("Insights", plotOutput("UIsince83Plot"), plotOutput("UIrecessionsPlot")) 
       )
     )
-  ) 
-))
+  )
+)
